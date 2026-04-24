@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VS & Company — Brand Brief 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  /* ── TOKENS ──────────────────────────────────────────────────────── */
+  :root {
+    --ink:        #0C0C0C;
+    --green-deep: #0D1F17;
+    --green-mid:  #1A3A2A;
+    --green-soft: #2A5040;
+    --gold:       #B8943F;
+    --gold-light: #D4AA5A;
+    --paper:      #F6F2EB;
+    --paper-warm: #EDE8DF;
+    --rule:       #CFC8B8;
+    --muted:      #7A7060;
+    --white:      #FDFBF8;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body:    'DM Sans', system-ui, sans-serif;
+  }
+
+  /* ── RESET + BASE ────────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--gold); color: var(--white); }
+
+  /* ── SCROLLBAR ───────────────────────────────────────────────────── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--paper-warm); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  /* ── SIDEBAR NAV ─────────────────────────────────────────────────── */
+  .sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 220px;
+    background: var(--green-deep);
+    display: flex;
+    flex-direction: column;
+    padding: 48px 0 32px;
+    z-index: 100;
+    border-right: 1px solid rgba(184,148,63,0.15);
+  }
+
+  .sidebar-logo {
+    padding: 0 28px 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .sidebar-logo .vs {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .sidebar-logo .company {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--gold);
+    margin-top: 2px;
+    letter-spacing: 0.02em;
+  }
+
+  .sidebar-label {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    padding: 28px 28px 12px;
+  }
+
+  .nav-list { list-style: none; flex: 1; }
+
+  .nav-list li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 28px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.02em;
+    transition: all 0.2s;
+    border-left: 2px solid transparent;
+  }
+
+  .nav-list li a:hover,
+  .nav-list li a.active {
+    color: var(--white);
+    border-left-color: var(--gold);
+    background: rgba(184,148,63,0.08);
+  }
+
+  .nav-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--gold);
+    min-width: 18px;
+  }
+
+  .sidebar-foot {
+    padding: 20px 28px 0;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    font-size: 10px;
+    color: rgba(255,255,255,0.2);
+    line-height: 1.6;
+  }
+
+  /* ── MAIN ────────────────────────────────────────────────────────── */
+  .main {
+    margin-left: 220px;
+    min-height: 100vh;
+  }
+
+  /* ── HERO ────────────────────────────────────────────────────────── */
+  .hero {
+    background: var(--green-deep);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 80px 80px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 80% 20%, rgba(184,148,63,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 80% at 10% 80%, rgba(26,58,42,0.8) 0%, transparent 60%);
+  }
+
+  .hero-grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(184,148,63,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184,148,63,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .hero-badge::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(72px, 9vw, 128px);
+    line-height: 0.88;
+    color: var(--white);
+    letter-spacing: -0.03em;
+    position: relative;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-desc {
+    max-width: 520px;
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-style: italic;
+    color: rgba(255,255,255,0.55);
+    margin-top: 32px;
+    line-height: 1.6;
+    border-left: 2px solid rgba(184,148,63,0.4);
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 48px;
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+  }
+
+  .hero-meta-item label {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 4px;
+  }
+
+  .hero-meta-item span {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* ── CONTENT WRAPPER ─────────────────────────────────────────────── */
+  .content { background: var(--paper); }
+
+  /* ── SECTION ─────────────────────────────────────────────────────── */
+  .section {
+    padding: 96px 80px;
+    border-bottom: 1px solid var(--rule);
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .section.visible { opacity: 1; transform: translateY(0); }
+
+  .section:nth-child(even) { background: var(--white); }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 56px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--gold);
+    min-width: 24px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 42px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    flex: 1;
+    line-height: 1.1;
+  }
+
+  .section-tag {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--paper-warm);
+    padding: 5px 12px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  /* ── LABEL ───────────────────────────────────────────────────────── */
+  .label {
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    margin-top: 36px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .label::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+  }
+
+  /* ── BODY TEXT ───────────────────────────────────────────────────── */
+  .body-text {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--ink);
+    max-width: 680px;
+    margin-bottom: 12px;
+  }
+
+  /* ── PULL QUOTE ──────────────────────────────────────────────────── */
+  .pull-quote {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--green-mid);
+    border-left: 3px solid var(--gold);
+    padding: 20px 28px;
+    margin: 40px 0;
+    background: rgba(184,148,63,0.04);
+    max-width: 720px;
+  }
+
+  .pull-quote cite {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-style: normal;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+
+  /* ── POSITIONING BOX ─────────────────────────────────────────────── */
+  .positioning-box {
+    background: var(--green-mid);
+    padding: 40px 48px;
+    margin: 32px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .positioning-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 80% at 100% 0%, rgba(184,148,63,0.12) 0%, transparent 60%);
+  }
+
+  .positioning-box .pb-label {
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .positioning-box .pb-text {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-style: italic;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.6;
+    position: relative;
+    max-width: 680px;
+  }
+
+  /* ── INSIGHT BOX ─────────────────────────────────────────────────── */
+  .insight-box {
+    background: var(--green-deep);
+    border-left: 4px solid var(--gold);
+    padding: 28px 32px;
+    margin: 40px 0;
+    max-width: 720px;
+  }
+
+  .insight-box .ib-label {
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .insight-box .ib-text {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.7;
+  }
+
+  /* ── GRID 2 / 3 ──────────────────────────────────────────────────── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 28px 0; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin: 28px 0; }
+  .grid-ref { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 28px 0; }
+
+  /* ── CARD ────────────────────────────────────────────────────────── */
+  .card {
+    background: var(--paper-warm);
+    padding: 24px;
+    border-top: 2px solid var(--gold);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .card-body { font-size: 13px; line-height: 1.75; color: var(--muted); }
+
+  /* ── REF CARD ────────────────────────────────────────────────────── */
+  .ref-card {
+    border: 1px solid var(--rule);
+    padding: 20px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .ref-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+
+  .ref-name {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .ref-why { font-size: 12.5px; color: var(--muted); line-height: 1.7; }
+
+  /* ── TRAIT LIST ──────────────────────────────────────────────────── */
+  .trait-list { list-style: none; max-width: 720px; }
+
+  .trait-list li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+
+  .trait-list li:last-child { border-bottom: none; }
+
+  .trait-marker {
+    color: var(--gold);
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-style: italic;
+    min-width: 14px;
+    margin-top: 1px;
+  }
+
+  .trait-list strong { color: var(--ink); font-weight: 500; }
+
+  /* ── DO / DON'T ──────────────────────────────────────────────────── */
+  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 32px 0; }
+
+  .do-col {
+    background: var(--green-mid);
+    padding: 28px 32px;
+  }
+
+  .dont-col {
+    background: var(--paper-warm);
+    padding: 28px 32px;
+    border: 1px solid var(--rule);
+  }
+
+  .col-hdr {
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .do-col .col-hdr { color: var(--gold); }
+  .dont-col .col-hdr { color: var(--muted); }
+
+  .do-col ul, .dont-col ul { list-style: none; }
+
+  .do-col ul li, .dont-col ul li {
+    padding: 7px 0;
+    font-size: 13.5px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    gap: 10px;
+  }
+
+  .dont-col ul li { border-bottom-color: rgba(0,0,0,0.05); }
+
+  .do-col ul li { color: rgba(255,255,255,0.85); }
+  .dont-col ul li { color: var(--ink); }
+
+  .do-col ul li::before { content: '✓'; color: var(--gold); flex-shrink: 0; }
+  .dont-col ul li::before { content: '×'; color: var(--muted); flex-shrink: 0; }
+
+  /* ── PALETTE ─────────────────────────────────────────────────────── */
+  .palette {
+    display: flex;
+    height: 120px;
+    margin: 28px 0 12px;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  }
+
+  .swatch {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10px 14px;
+    transition: flex 0.3s ease;
+    cursor: default;
+  }
+
+  .swatch:hover { flex: 2; }
+
+  .sw-name {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  .sw-hex { font-size: 10px; margin-top: 3px; opacity: 0.65; font-family: monospace; }
+
+  /* ── TYPE SPECIMEN ───────────────────────────────────────────────── */
+  .type-specimen {
+    border: 1px solid var(--rule);
+    padding: 28px 32px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+  }
+
+  .type-specimen:hover { border-color: var(--gold); }
+
+  .type-role {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .type-display {
+    font-family: var(--font-display);
+    font-size: 52px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .type-sans {
+    font-family: var(--font-body);
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .type-desc { font-size: 13px; color: var(--muted); line-height: 1.6; max-width: 480px; }
+
+  /* ── TONE EXAMPLES ───────────────────────────────────────────────── */
+  .tone-bad {
+    border-left: 3px solid var(--rule);
+    padding: 16px 20px;
+    margin: 20px 0 8px;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  .tone-good {
+    border-left: 3px solid var(--gold);
+    padding: 16px 20px;
+    margin: 0 0 28px;
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-style: italic;
+    color: var(--green-mid);
+    background: rgba(184,148,63,0.04);
+  }
+
+  .tone-label {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  /* ── ARCHETYPES ──────────────────────────────────────────────────── */
+  .archetype-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 28px 0; }
+
+  .archetype-card {
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .archetype-card:first-child { background: var(--green-deep); }
+  .archetype-card:last-child { background: var(--paper-warm); border: 1px solid var(--rule); }
+
+  .archetype-card::before {
+    content: attr(data-num);
+    position: absolute;
+    right: 24px;
+    top: 16px;
+    font-family: var(--font-display);
+    font-size: 80px;
+    font-style: italic;
+    font-weight: 700;
+    opacity: 0.05;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .arch-title {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .archetype-card:first-child .arch-title { color: var(--white); }
+  .archetype-card:last-child .arch-title { color: var(--ink); }
+
+  .arch-body { font-size: 13.5px; line-height: 1.75; }
+  .archetype-card:first-child .arch-body { color: rgba(255,255,255,0.7); }
+  .archetype-card:last-child .arch-body { color: var(--muted); }
+
+  /* ── CALIBRATION BOX ─────────────────────────────────────────────── */
+  .calibration {
+    border: 1px solid var(--gold);
+    padding: 28px 32px;
+    margin: 36px 0;
+    max-width: 680px;
+    position: relative;
+  }
+
+  .calibration::before {
+    content: 'CALIBRACIÓN';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--paper);
+    padding: 0 8px;
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+  }
+
+  .section:nth-child(even) .calibration::before { background: var(--white); }
+
+  .calibration p {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-style: italic;
+    color: var(--green-mid);
+    line-height: 1.6;
+  }
+
+  .calibration .cal-note {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 12px;
+    font-style: normal;
+  }
+
+  /* ── PROFILE NEGATIVE ────────────────────────────────────────────── */
+  .neg-profile {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--muted);
+    padding: 24px 28px;
+    max-width: 680px;
+    margin: 20px 0;
+  }
+
+  .neg-profile .np-label {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .neg-profile p { font-size: 14px; line-height: 1.8; color: var(--ink); }
+
+  /* ── PRIORITY LIST ───────────────────────────────────────────────── */
+  .priority-list { list-style: none; counter-reset: priority; max-width: 640px; }
+
+  .priority-list li {
+    counter-increment: priority;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .priority-list li::before {
+    content: counter(priority);
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-style: italic;
+    color: var(--gold);
+    line-height: 1;
+    min-width: 24px;
+  }
+
+  /* ── STAT BAR (References visual link) ───────────────────────────── */
+  .ref-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .ref-tag {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    background: rgba(184,148,63,0.12);
+    color: var(--gold);
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  /* ── FOOTER ──────────────────────────────────────────────────────── */
+  .brief-footer {
+    background: var(--green-deep);
+    padding: 48px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .brief-footer .footer-brand {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+
+  .brief-footer .footer-brand em { font-style: italic; color: var(--gold); }
+
+  .brief-footer .footer-meta {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* ── PROGRESS BAR TOP ────────────────────────────────────────────── */
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    background: var(--gold);
+    width: 0%;
+    z-index: 200;
+    transition: width 0.1s linear;
+  }
+
+  /* ── ANIMATIONS ──────────────────────────────────────────────────── */
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero > * { animation: fadeSlideUp 0.8s ease both; }
+  .hero-badge   { animation-delay: 0.1s; }
+  .hero-title   { animation-delay: 0.25s; }
+  .hero-desc    { animation-delay: 0.4s; }
+  .hero-meta    { animation-delay: 0.55s; }
+
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<!-- ── SIDEBAR ──────────────────────────────────────────────────────── -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="vs">VS &amp;</div>
+    <div class="company">Company International</div>
+  </div>
+  <div class="sidebar-label">Brand Brief 2026</div>
+  <ul class="nav-list">
+    <li><a href="#s1" class="nav-link"><span class="nav-num">01</span> Esencia de Marca</a></li>
+    <li><a href="#s2" class="nav-link"><span class="nav-num">02</span> Propuesta de Valor</a></li>
+    <li><a href="#s3" class="nav-link"><span class="nav-num">03</span> Personalidad</a></li>
+    <li><a href="#s4" class="nav-link"><span class="nav-num">04</span> Audiencia Objetivo</a></li>
+    <li><a href="#s5" class="nav-link"><span class="nav-num">05</span> Posicionamiento</a></li>
+    <li><a href="#s6" class="nav-link"><span class="nav-num">06</span> Dirección Visual</a></li>
+    <li><a href="#s7" class="nav-link"><span class="nav-num">07</span> Tono de Comunicación</a></li>
+    <li><a href="#s8" class="nav-link"><span class="nav-num">08</span> Referencias Creativas</a></li>
+  </ul>
+  <div class="sidebar-foot">
+    Documento confidencial<br>
+    Para uso del equipo de diseño<br>
+    Abril 2026
+  </div>
+</nav>
+
+<!-- ── MAIN ─────────────────────────────────────────────────────────── -->
+<div class="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid-lines"></div>
+    <div class="hero-badge">Rebranding Brief</div>
+    <h1 class="hero-title">VS &amp;<br><em>Company</em></h1>
+    <p class="hero-desc">
+      "Transformamos empresas en organizaciones estructuradas, rentables y autónomas, donde el CEO deja de operar para liderar el crecimiento."
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <label>Fundador</label>
+        <span>Victor Salinas</span>
+      </div>
+      <div class="hero-meta-item">
+        <label>Mercado</label>
+        <span>México · LATAM · Brasil · Miami</span>
+      </div>
+      <div class="hero-meta-item">
+        <label>Destinatario</label>
+        <span>Equipo de diseño / Dirección creativa</span>
+      </div>
+      <div class="hero-meta-item">
+        <label>Fecha</label>
+        <span>Abril 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="content">
+
+    <!-- ── 01 ESENCIA ─────────────────────────────────────────────── -->
+    <section class="section" id="s1">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2 class="section-title">Esencia de Marca</h2>
+        <span class="section-tag">Brand Core</span>
+      </div>
+
+      <div class="label">Propósito</div>
+      <p class="body-text">VS &amp; Company International existe para eliminar el caos estructural de las organizaciones medianas en LATAM — y devolver al CEO su rol verdadero: liderar el crecimiento, no apagar incendios.</p>
+      <p class="body-text">No es consultoría de gestión del cambio. No es coaching ejecutivo. Es arquitectura organizacional aplicada con rigor metodológico y prueba viva de resultados.</p>
+
+      <div class="pull-quote">
+        "Soy un especialista en la incomodidad del CEO."
+        <cite>— Victor Salinas, definición propia en entrevista de identidad</cite>
+      </div>
+
+      <div class="label">Misión</div>
+      <p class="body-text">Transformar empresas en organizaciones estructuradas, rentables y autónomas — donde cada rol tiene propósito, cada líder tiene accountability, y el CEO puede dirigir desde la estrategia, no desde la urgencia.</p>
+
+      <div class="label">Visión a 3 años</div>
+      <p class="body-text" style="font-style:italic; color:var(--green-mid);">Ser reconocidos como <strong>la autoridad en diseño y estructuras organizacionales en LATAM</strong>. Que al escuchar "VS &amp; Company" o "Victor Salinas", el mercado piense inmediatamente: la firma que no consulta — <em>transforma</em>.</p>
+
+      <div class="label">Creencia Central</div>
+      <p class="body-text">La rentabilidad no es el punto de partida. Es la consecuencia de hacer bien lo esencial. Las empresas que crecen de forma sostenida construyen valor primero — en su equipo y en su cliente — y capturan utilidades después. La mayoría hace lo contrario y se pregunta por qué no escala.</p>
+
+      <div class="insight-box">
+        <div class="ib-label">Nota para el diseñador — Tensión de marca</div>
+        <p class="ib-text">VS &amp; Company y Victor Salinas son dos marcas que deben coexistir sin competirse. La firma es el vehículo institucional. Victor Salinas es la voz, la prueba y la autoridad personal. El sistema visual debe permitir que ambas sean legibles por separado y coherentes juntas.</p>
+      </div>
+    </section>
+
+    <!-- ── 02 PROPUESTA DE VALOR ──────────────────────────────────── -->
+    <section class="section" id="s2">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Propuesta de Valor</h2>
+        <span class="section-tag">Value Proposition</span>
+      </div>
+
+      <div class="positioning-box">
+        <div class="pb-label">Declaración Central</div>
+        <p class="pb-text">VS &amp; Company diseña la arquitectura interna que permite a una empresa operar sin depender de su dueño — con estructura real, líderes accountables y resultados que se sostienen solos.</p>
+      </div>
+
+      <div class="label">El problema que resuelve</div>
+      <p class="body-text">La mayoría de empresas medianas en LATAM tienen el mismo problema invisible: su CEO es el cuello de botella. Toda decisión pasa por él. Todo se detiene cuando él se detiene. Los líderes intermedios son supervisores reactivos, no responsables de resultados. No hay claridad de roles, no hay métricas, no hay estructura que escale.</p>
+      <p class="body-text"><strong>El dueño trabaja dentro del negocio. No sobre el negocio.</strong></p>
+
+      <div class="label">Los tres pilares del servicio</div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title">Diagnóstico Real</div>
+          <p class="card-body">No encuestas de satisfacción. Un análisis profundo de estructura, equipo y operación que expone el problema desde la raíz — con datos, no con intuición.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Rediseño Organizacional</div>
+          <p class="card-body">Nuevo organigrama. Roles con propósito claro. Métricas definidas. Personas correctas en posiciones correctas. Sin ambigüedad, sin zonas grises.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Formación de Líderes</div>
+          <p class="card-body">Líderes que dirigen, exigen resultados y desarrollan equipos — no supervisores que apagan fuegos. Accountability real, no declarada.</p>
+        </div>
+      </div>
+
+      <div class="label">El diferenciador que nadie puede replicar</div>
+      <p class="body-text">Victor Salinas no solo diseña estructuras organizacionales para otros. Dirige AMG — un grupo de restaurantes con más de 300 empleados e ingresos de 9 cifras — usando exactamente el mismo sistema que implementa con sus clientes.</p>
+      <p class="body-text">Eso convierte cada engagement en algo diferente: no es teoría que alguien leyó. Es práctica que alguien vive.</p>
+
+      <div class="pull-quote">
+        "El consultor que también es empresario activo — y puede demostrarlo con sus propios números."
+      </div>
+
+      <div class="label">Metodología base</div>
+      <p class="body-text">VS &amp; Company aplica el <strong>Hubbard Management System</strong> — una metodología de gestión organizacional basada en principios empíricos, no especulativos, con décadas de aplicación global. El sistema establece estructuras organizacionales claras, monitoreo de desempeño por estadísticas y ética operativa para garantizar resultados sostenibles.</p>
+      <p class="body-text">La recepción con clientes ha sido consistentemente positiva — porque se presenta por lo que es: un sistema probado, no una ideología. La mayoría de los CEOs lo encuentran revelador desde la primera sesión.</p>
+    </section>
+
+    <!-- ── 03 PERSONALIDAD ────────────────────────────────────────── -->
+    <section class="section" id="s3">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Personalidad de Marca</h2>
+        <span class="section-tag">Brand Personality</span>
+      </div>
+
+      <div class="label">Arquetipo</div>
+      <p class="body-text" style="margin-bottom:20px;">VS &amp; Company opera en la intersección de dos arquetipos. Ambos deben coexistir en la identidad visual — ninguno por separado es suficiente.</p>
+
+      <div class="archetype-grid">
+        <div class="archetype-card" data-num="I">
+          <h3 class="arch-title">El Arquitecto</h3>
+          <p class="arch-body">Diseña sistemas con precisión. Cada pieza tiene un lugar. Cada rol, un propósito. No improvisa — construye. La estructura no es burocracia; es libertad operativa.</p>
+        </div>
+        <div class="archetype-card" data-num="II">
+          <h3 class="arch-title">El Provocador Constructivo</h3>
+          <p class="arch-body">Hace las preguntas que nadie hace. Presiona las heridas correctas hasta que el CEO llega solo a la conclusión que necesita. No endulza — diagnostica.</p>
+        </div>
+      </div>
+
+      <div class="label">Atributos de personalidad</div>
+      <ul class="trait-list">
+        <li>
+          <span class="trait-marker">→</span>
+          <span><strong>Autoridad sin distancia.</strong> Victor proyecta seguridad y experiencia sin la frialdad del consultor corporativo. Es accesible, directo, genera confianza rápido — pero nadie duda de quién sabe más en la sala.</span>
+        </li>
+        <li>
+          <span class="trait-marker">→</span>
+          <span><strong>Energía ejecutora, no académica.</strong> No cita estudios ni teorías — cita resultados. El lenguaje es el de un empresario que habla con otro empresario, no el de un consultor que habla con un cliente.</span>
+        </li>
+        <li>
+          <span class="trait-marker">→</span>
+          <span><strong>Firme, no agresivo.</strong> Hay convicción en cada posición. No hay necesidad de validación externa. Si algo está mal en tu empresa, lo va a decir — con precisión, sin crueldad.</span>
+        </li>
+        <li>
+          <span class="trait-marker">→</span>
+          <span><strong>Adaptable en forma, consistente en fondo.</strong> Se viste según el contexto, ajusta el tono según el cliente — pero el diagnóstico, el sistema y los estándares no se negocian.</span>
+        </li>
+        <li>
+          <span class="trait-marker">→</span>
+          <span><strong>Prueba viva del sistema.</strong> AMG no es un caso de estudio — es evidencia en tiempo real. La marca personal y la firma se validan mutuamente.</span>
+        </li>
+      </ul>
+
+      <div class="label">Referencias de personalidad</div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title">Gary Vaynerchuk</div>
+          <p class="card-body">Energía y autenticidad sin filtro. Habla como empresario, no como consultor. Convicción sin pedantería.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Ryan Serhant</div>
+          <p class="card-body">Presencia premium y ambición de escala. Marca personal que coexiste con firma institucional de alto nivel.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Grant Cardone</div>
+          <p class="card-body">Convicción de resultados absolutos. El empresario como prueba del método. La firma como extensión del fundador.</p>
+        </div>
+      </div>
+      <p class="body-text" style="font-size:13px; color:var(--muted); margin-top:8px;">Ninguno de los tres por separado — los tres juntos definen el registro correcto. La marca institucional debe sentirse un nivel más arriba en formalidad, pero nunca distante ni académica.</p>
+    </section>
+
+    <!-- ── 04 AUDIENCIA ───────────────────────────────────────────── -->
+    <section class="section" id="s4">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Audiencia Objetivo</h2>
+        <span class="section-tag">Target Audience</span>
+      </div>
+
+      <div class="label">Perfil primario — El cliente ideal</div>
+      <p class="body-text">CEO o dueño de empresa mediana (50–600 empleados) en México, LATAM o Brasil. Empresa con ingresos entre $5M y $100M USD. Industrias prioritarias: hotelería, hospitalidad, restaurantes / food service, empresas familiares en proceso de profesionalización, y empresas latinoamericanas con operaciones en Estados Unidos.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Psicografía</div>
+          <p class="card-body">Ambicioso. Quiere escalar, no solo sobrevivir. Siente que la empresa depende demasiado de él pero no sabe cómo cambiarlo. Está cansado — no de trabajar, sino de que todo pase por sus manos. Ha intentado delegar. No ha funcionado. Sabe que el problema es estructural pero no tiene el método para atacarlo.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Momento de contratación</div>
+          <p class="card-body">El CEO llega a VS &amp; Company cuando ya reconoce que el crecimiento se frenó — no por falta de ventas, sino por falta de estructura interna. Es alguien que ya intentó resolver el problema por su cuenta y entendió que necesita ayuda externa de alto nivel.</p>
+        </div>
+      </div>
+
+      <div class="label">Perfil negativo — Con quién NO se trabaja</div>
+      <div class="neg-profile">
+        <div class="np-label">Anti-perfil</div>
+        <p>Dueños ausentes que quieren delegar el problema sin involucrarse. Empresas que buscan comodidad, no transformación. Directivos que esperan que un tercero "arregle" el negocio por ellos. Las transformaciones sostenibles requieren decisiones firmes, disciplina operativa y liderazgo activo del propio CEO — sin eso, VS &amp; Company no toma ese trabajo.</p>
+      </div>
+
+      <div class="insight-box">
+        <div class="ib-label">Nota para el diseñador — Implicación visual</div>
+        <p class="ib-text">El cliente ideal es un CEO o dueño latinoamericano de 38–58 años, sofisticado pero no pretencioso, orientado a resultados, no a imagen. La marca debe sentirse premium sin ser ostentosa, seria sin ser aburrida. No es el lujo de una firma de Boston — es la autoridad de alguien que ha construido lo que enseña.</p>
+      </div>
+    </section>
+
+    <!-- ── 05 POSICIONAMIENTO ─────────────────────────────────────── -->
+    <section class="section" id="s5">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2 class="section-title">Posicionamiento</h2>
+        <span class="section-tag">Market Position</span>
+      </div>
+
+      <div class="label">Declaración de posicionamiento</div>
+      <div class="positioning-box">
+        <div class="pb-label">Para el diseñador — Este es el norte estratégico</div>
+        <p class="pb-text">Para el CEO de una empresa mediana en LATAM que siente que su negocio depende demasiado de él, VS &amp; Company International es la firma de diseño organizacional que transforma la estructura interna de la empresa — no para que el CEO trabaje menos, sino para que pueda liderar más.</p>
+      </div>
+
+      <div class="label">Territorio de marca</div>
+      <p class="body-text" style="font-style:italic; color:var(--green-mid); font-family:var(--font-display); font-size:20px;">"Diseño y estructuras organizacionales" — ese es el territorio que VS &amp; Company debe ocupar y defender en LATAM.</p>
+      <p class="body-text">No "consultoría de liderazgo" (demasiado genérico), no "coaching ejecutivo" (demasiado suave), no "transformación digital" (equivocado). <strong>Estructura. Diseño. Organización. Autonomía operativa.</strong></p>
+
+      <div class="label">Ventaja competitiva — Lo que nadie más tiene igual</div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title">Prueba viva</div>
+          <p class="card-body">Victor dirige AMG con el mismo sistema que implementa. 300+ empleados. 9 cifras de ingresos. No es teoría — es resultado actual y verificable.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Método probado globalmente</div>
+          <p class="card-body">El Hubbard Management System tiene décadas de aplicación global. No es una metodología inventada — es un sistema con profundidad real y resultados documentados.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">Diagnóstico socrático</div>
+          <p class="card-body">VS &amp; Company no llega con soluciones predefinidas. Hace las preguntas correctas hasta que el CEO identifica el problema — y llega solo a la conclusión de que necesita actuar.</p>
+        </div>
+      </div>
+
+      <div class="label">Contra quién compite — Sin nombrarlos</div>
+      <p class="body-text">VS &amp; Company no compite con las grandes firmas de consultoría (McKinsey, Deloitte). Compite contra coaches de negocios genéricos, consultores de liderazgo sin metodología propia, y programas de capacitación que forman individuos pero no transforman estructuras.</p>
+      <p class="body-text" style="font-weight:500;">La diferencia: VS &amp; Company no forma personas. <em>Construye organizaciones.</em></p>
+    </section>
+
+    <!-- ── 06 DIRECCIÓN VISUAL ────────────────────────────────────── -->
+    <section class="section" id="s6">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2 class="section-title">Dirección Visual</h2>
+        <span class="section-tag">Visual Identity</span>
+      </div>
+
+      <div class="label">Concepto visual central</div>
+      <p class="body-text"><strong>Arquitectura con carácter.</strong> La identidad visual de VS &amp; Company debe comunicar estructura, precisión y autoridad — sin frialdad corporativa. Piensa en la diferencia entre un edificio de cristal genérico y un edificio con presencia: misma función, distinta personalidad.</p>
+      <p class="body-text">La marca debe sentirse construida — no decorada. Cada elemento visual tiene un propósito, igual que cada rol en una organización bien diseñada.</p>
+
+      <div class="label">Paleta de color — Hover para ampliar</div>
+      <div class="palette">
+        <div class="swatch" style="background:#0D1F17;">
+          <span class="sw-name" style="color:#B8943F;">Verde Noche</span>
+          <span class="sw-hex" style="color:#B8943F;">#0D1F17</span>
+        </div>
+        <div class="swatch" style="background:#1A3A2A;">
+          <span class="sw-name" style="color:#F6F2EB;">Selva Profunda</span>
+          <span class="sw-hex" style="color:#F6F2EB;">#1A3A2A</span>
+        </div>
+        <div class="swatch" style="background:#B8943F;">
+          <span class="sw-name" style="color:#0D1F17;">Oro Sobrio</span>
+          <span class="sw-hex" style="color:#0D1F17;">#B8943F</span>
+        </div>
+        <div class="swatch" style="background:#F6F2EB; border:1px solid #CFC8B8;">
+          <span class="sw-name" style="color:#7A7060;">Papel Cálido</span>
+          <span class="sw-hex" style="color:#7A7060;">#F6F2EB</span>
+        </div>
+        <div class="swatch" style="background:#0C0C0C;">
+          <span class="sw-name" style="color:#F6F2EB;">Tinta</span>
+          <span class="sw-hex" style="color:#F6F2EB;">#0C0C0C</span>
+        </div>
+      </div>
+      <p class="body-text" style="font-size:13px; color:var(--muted);">El verde oscuro como dominante comunica solidez, crecimiento y autoridad sin la agresividad del negro puro. El oro actúa como acento de precisión — no de lujo ostentoso, sino de excelencia específica. El papel cálido evita la frialdad del blanco corporativo.</p>
+
+      <div class="label">Tipografía</div>
+      <div class="type-specimen">
+        <div class="type-role">Display / Titulares — Autoridad editorial</div>
+        <div class="type-display">Cormorant Garamond</div>
+        <p class="type-desc">Para titulares, nombres, citas y elementos de alto impacto. Su elegancia serif comunica profundidad y permanencia — no tendencia. Usar en weight Light (300) y SemiBold (600) solamente.</p>
+      </div>
+      <div class="type-specimen">
+        <div class="type-role">Body / Interface — Claridad ejecutiva</div>
+        <div class="type-sans">DM Sans</div>
+        <p class="type-desc">Para cuerpo de texto, labels, UI y comunicaciones digitales. Limpia, moderna, sin personalidad excesiva — sirve al contenido sin competirle. Usar en weight Light (300) y Regular (400).</p>
+      </div>
+
+      <div class="label">Principios visuales</div>
+      <ul class="trait-list">
+        <li><span class="trait-marker">→</span><span><strong>Espacio negativo generoso.</strong> La claridad visual refleja la claridad organizacional que VS &amp; Company promete. No hay saturación — hay jerarquía.</span></li>
+        <li><span class="trait-marker">→</span><span><strong>Líneas y grid como elemento gráfico.</strong> Las líneas de estructura — divisores, grids, marcos — pueden convertirse en elementos de identidad que refuerzan el concepto de arquitectura organizacional.</span></li>
+        <li><span class="trait-marker">→</span><span><strong>Fotografía con presencia, no stock.</strong> Victor en sala, en contexto de trabajo real, en conversación con clientes. Nunca imágenes de handshakes o reuniones genéricas.</span></li>
+        <li><span class="trait-marker">→</span><span><strong>Contraste deliberado.</strong> Verde profundo sobre papel cálido, oro sobre oscuro. La marca tiene contraste — igual que las conversaciones que VS &amp; Company tiene con sus clientes.</span></li>
+      </ul>
+
+      <div class="label" style="margin-top:40px;">Expresión de marca — Sí / No</div>
+      <div class="do-dont">
+        <div class="do-col">
+          <div class="col-hdr">Sí — Expresión de marca</div>
+          <ul>
+            <li>Sobriedad con carácter</li>
+            <li>Autoridad sin distancia</li>
+            <li>Estructura visible en el layout</li>
+            <li>Fotografía real, con presencia</li>
+            <li>Tipografía con contraste serif/sans</li>
+            <li>Oro como acento, no protagonista</li>
+            <li>Geometría limpia, no decorativa</li>
+          </ul>
+        </div>
+        <div class="dont-col">
+          <div class="col-hdr">No — Lo que se evita</div>
+          <ul>
+            <li>Azul corporativo genérico</li>
+            <li>Gradientes de moda</li>
+            <li>Íconos de negocios clichés</li>
+            <li>Fotografía de stock</li>
+            <li>Tipografía sin carácter (Inter, Roboto)</li>
+            <li>Lujo ostentoso o exceso decorativo</li>
+            <li>Look de startup tech sin raíces</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="label">Aplicaciones prioritarias — En orden</div>
+      <ul class="priority-list">
+        <li>Identidad de marca — Logo VS &amp; Company + Logo Victor Salinas y su sistema de coexistencia</li>
+        <li>Sistema de presentaciones — Deck de ventas y propuesta de consultoría</li>
+        <li>Presencia digital — LinkedIn, Instagram, sitio web</li>
+        <li>Papelería ejecutiva — Tarjeta, firma de email, portada de documento</li>
+      </ul>
+    </section>
+
+    <!-- ── 07 TONO ─────────────────────────────────────────────────── -->
+    <section class="section" id="s7">
+      <div class="section-header">
+        <span class="section-num">07</span>
+        <h2 class="section-title">Tono de Comunicación</h2>
+        <span class="section-tag">Voice &amp; Tone</span>
+      </div>
+
+      <div class="label">Voz de marca — Definición</div>
+      <p class="body-text">VS &amp; Company habla como un empresario que sabe más que tú sobre tu propio negocio — y te lo dice con respeto, sin condescendencia, y con evidencia. No es el tono del consultor que usa jerga para parecer sofisticado. Es el tono del empresario que habla claro porque no necesita impresionar.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title">Es</div>
+          <p class="card-body">Directo. Firme. Concreto. Orientado a resultados. Seguro sin arrogancia. Retador sin ser agresivo. Humano sin ser informal en exceso. Siempre sustanciado — nunca una afirmación sin respaldo.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">No es</div>
+          <p class="card-body">Académico. Teórico. Motivacional vacío. Corporativo frío. Agresivo o provocador por provocar. Condescendiente — VS &amp; Company habla de empresario a empresario.</p>
+        </div>
+      </div>
+
+      <div class="label">Ejemplos de tono — Aplicación real</div>
+      <div class="tone-label">Incorrecto</div>
+      <div class="tone-bad">
+        "Potenciamos el capital humano de tu organización para maximizar el ROI de tus procesos de transformación."
+      </div>
+      <div class="tone-label">Correcto</div>
+      <div class="tone-good">
+        "Tu empresa no crece porque todo pasa por ti. Eso no es un problema de liderazgo — es un problema de estructura. Y la estructura se diseña."
+      </div>
+
+      <div class="label">Principios de escritura</div>
+      <ul class="trait-list">
+        <li><span class="trait-marker">→</span><span>Oraciones cortas. Punto seguido, no punto y coma. La claridad es el respeto más alto que se le puede dar a un CEO ocupado.</span></li>
+        <li><span class="trait-marker">→</span><span>Resultados antes que proceso. Primero dices qué cambia — después explicas cómo.</span></li>
+        <li><span class="trait-marker">→</span><span>Sin eufemismos. Si algo está mal en la empresa del cliente, se dice. Con precisión, sin crueldad.</span></li>
+        <li><span class="trait-marker">→</span><span>Primera persona cuando habla Victor. Tercera persona institucional cuando habla VS &amp; Company. Las dos voces coexisten sin confundirse.</span></li>
+      </ul>
+
+      <div class="calibration">
+        <p>"¿Esto lo diría un empresario que también es consultor — o lo escribió alguien en una agencia que nunca ha dirigido una empresa?"</p>
+        <p class="cal-note">Si la respuesta es lo segundo — reescribir. Esta es la pregunta de calibración interna para todo el equipo de contenido y diseño.</p>
+      </div>
+    </section>
+
+    <!-- ── 08 REFERENCIAS ─────────────────────────────────────────── -->
+    <section class="section" id="s8">
+      <div class="section-header">
+        <span class="section-num">08</span>
+        <h2 class="section-title">Referencias Creativas</h2>
+        <span class="section-tag">Creative References</span>
+      </div>
+
+      <div class="label">Referencias de marca — Espíritu, no copia</div>
+      <div class="grid-ref">
+        <div class="ref-card">
+          <div class="ref-header">
+            <div class="ref-name">Serhant</div>
+            <span class="ref-tag">Identidad personal</span>
+          </div>
+          <p class="ref-why">Marca personal de alto rendimiento que coexiste con firma institucional. Premium sin distancia. Energía ejecutora con producción de contenido de calidad.</p>
+        </div>
+        <div class="ref-card">
+          <div class="ref-header">
+            <div class="ref-name">Bain &amp; Co</div>
+            <span class="ref-tag">Estética solamente</span>
+          </div>
+          <p class="ref-why">La austeridad tipográfica y el peso visual de sus publicaciones. No el modelo de negocio. Solo la sobriedad de quien no necesita convencer de que es serio.</p>
+        </div>
+        <div class="ref-card">
+          <div class="ref-header">
+            <div class="ref-name">Cardone Ventures</div>
+            <span class="ref-tag">Autoridad de resultados</span>
+          </div>
+          <p class="ref-why">Autoridad construida desde resultados personales verificables. El empresario como prueba del método. La firma como extensión del fundador.</p>
+        </div>
+        <div class="ref-card">
+          <div class="ref-header">
+            <div class="ref-name">Arquitectura LATAM</div>
+            <span class="ref-tag">Espíritu visual</span>
+          </div>
+          <p class="ref-why">Taller | Héctor Barroso, Sordo Madaleno — rigor de diseño con raíces latinoamericanas. Sofisticación que no niega su origen.</p>
+        </div>
+        <div class="ref-card">
+          <div class="ref-header">
+            <div class="ref-name">Harvard Business Review</div>
+            <span class="ref-tag">Layout editorial</span>
+          </div>
+          <p class="ref-why">La jerarquía tipográfica de sus publicaciones: autoridad editorial sin exceso decorativo. El contenido como protagonista.</p>
+        </div>
+        <div class="ref-card">
+          <div class="ref-header">
+            <div class="ref-name">Le Méridien</div>
+            <span class="ref-tag">Caso de éxito</span>
+          </div>
+          <p class="ref-why">El caso de referencia de VS &amp; Company. Una marca que pasó de operar en caos a operar con estructura. Ese antes/después es la historia visual de lo que hace VS &amp; Company.</p>
+        </div>
+      </div>
+
+      <div class="label">Lo que la marca NO debe parecerse</div>
+      <div class="neg-profile">
+        <div class="np-label">Evitar explícitamente</div>
+        <p>No a las marcas de coaching motivacional latinoamericano — colores brillantes, tipografía genérica, fotografía de auditorios llenos, frases de empowerment sin sustancia. No a las firmas de consultoría de grandes ligas con identidades minimalistas hasta el punto de ser invisibles. No a las marcas de startup tech con ilustraciones planas y paleta pastel. VS &amp; Company debe sentirse como algo que no existía antes en el mercado de consultoría LATAM.</p>
+      </div>
+
+      <div class="insight-box" style="margin-top:48px;">
+        <div class="ib-label">Nota final para el diseñador</div>
+        <p class="ib-text">Este brief tiene una sola ambición visual: que cuando alguien vea VS &amp; Company o Victor Salinas en cualquier superficie — digital, impresa, en una sala — piense inmediatamente "autoridad organizacional" sin que nadie lo diga. La marca debe hacer el trabajo que el nombre todavía no hace solo. En 3 años, ese gap debería haberse cerrado.</p>
+      </div>
+    </section>
+
+  </div><!-- /content -->
+
+  <!-- FOOTER -->
+  <footer class="brief-footer">
+    <div>
+      <div class="footer-brand">VS &amp; <em>Company</em></div>
+      <div style="font-size:12px; color:rgba(255,255,255,0.3); margin-top:8px;">International LLC</div>
+    </div>
+    <div class="footer-meta">
+      Brief de rebranding — Documento confidencial<br>
+      Para uso del equipo de diseño / Dirección creativa<br>
+      Elaborado a partir de entrevista de identidad · Abril 2026
+    </div>
+  </footer>
+
+</div><!-- /main -->
+
+<script>
+  // Progress bar
+  const progress = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    progress.style.width = pct + '%';
+  });
+
+  // Intersection observer for section reveal
+  const sections = document.querySelectorAll('.section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  sections.forEach(s => observer.observe(s));
+
+  // Active nav link
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sectionEls = document.querySelectorAll('section[id]');
+
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3, rootMargin: '-10% 0px -60% 0px' });
+
+  sectionEls.forEach(s => navObserver.observe(s));
+</script>
+
+</body>
+</html>
